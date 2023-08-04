@@ -2,7 +2,7 @@
 
 -- fastn.package: country-details-ui
 
--- fastn.dependency: harshdoesdev.github.io/fastn-country-code-example as country-details-http
+-- fastn.dependency: fastn-community.github.io/country-details-http as country-details-http
 
 ;; ---- Dynamic url for the country details page
 

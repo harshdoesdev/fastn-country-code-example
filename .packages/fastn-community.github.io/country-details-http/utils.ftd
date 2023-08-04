@@ -1,4 +1,4 @@
--- import: harshdoesdev.github.io/fastn-country-code-example/models/country as country-models
+-- import: fastn-community.github.io/country-details-http/models/country as country-models
 
 ;; ---- Joins two strings
 
