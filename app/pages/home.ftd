@@ -6,6 +6,8 @@
 ;; ---- make a GET request to retrieve a list of countries from the API and map the data of each country
 ;; on the "country" model
 
+-- string $query: None
+
 -- country-models.country list countries:
 $processor$: pr.http
 url: https://restcountries.com/v3.1/all
@@ -29,7 +31,7 @@ overflow-y: auto
 -- ftd.row:
 wrap: true
 spacing: space-around
-padding.rem: 2
+padding-horizontal.rem: 2
 border-radius.rem: 1
 
 -- card.country-card: $country
