@@ -1,0 +1,29 @@
+-- record country-name:
+string common:
+string official:
+optional country-native-name nativeName:
+
+-- record country-native-name-eng:
+string common:
+
+-- record country-native-name:
+optional country-native-name-eng eng:
+
+-- record country-flag:
+string png:
+string svg:
+
+;; this is the model for the "country" objects
+;; we will use it to map the details retrieved from the API in json format to the one we can use in fastn
+;; ---- the property names should be same as in the json response
+
+-- record country:
+country-name name:
+integer population:
+string list capital:
+string list tld:
+string list borders:
+string cca2:
+string region:
+optional string subregion:
+country-flag flags:

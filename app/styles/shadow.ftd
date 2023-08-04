@@ -1,0 +1,12 @@
+;; ---- define a shadow color for dark and light mode, here it is same for both
+
+-- ftd.color shadow-color:
+light: #efefef
+dark: #efefef
+
+;; ---- define a shadow style for the cards (and other stuff)
+
+-- ftd.shadow card-shadow:
+color: $shadow-color
+blur.px: 5
+spread.rem: 0.2

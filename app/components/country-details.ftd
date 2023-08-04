@@ -1,0 +1,159 @@
+-- import: country-details-http/models/country as country-models
+-- import: country-details-http/utils as utility
+-- import: country-details-ui/app/styles/shadow
+
+;; ------- COUNTRY DETAIL COMPONENT
+
+-- component country-detail:
+caption string label:
+string value:
+
+-- ftd.row:
+spacing.fixed.rem: 0.25
+
+-- ftd.text: $country-detail.label
+style: semi-bold
+role: $inherited.types.label-large
+
+-- ftd.text: $country-detail.value
+role: $inherited.types.label-large
+
+-- end: ftd.row
+
+-- end: country-detail
+
+;; ------- BORDER COUNTRY COMPONENT
+
+-- component border-country:
+caption string country:
+
+-- ftd.text: $border-country.country
+background.solid: #fff
+padding-vertical.rem: 0.25
+padding-horizontal.rem: 1
+role: $inherited.types.copy-small
+shadow: $shadow.card-shadow
+border-radius.rem: .25
+color: #888
+cursor: pointer
+$on-click$: $utility.open-country-page(country = $border-country.country)
+
+-- end: border-country
+
+;; ------- BACK BUTTON
+
+-- component back-button:
+
+-- ftd.text: ← Back
+background.solid: #fff
+padding-vertical.rem: 0.5
+padding-horizontal.rem: 2
+role: $inherited.types.copy-small
+shadow: $shadow.card-shadow
+border-radius.rem: .25
+color: #646464
+cursor: pointer
+$on-click$: $utility.go-back()
+
+-- end: back-button
+
+;; ------- COUNTRY DETAILS COMPONENT
+
+-- component country-details:
+caption country-models.country country:
+
+-- ftd.column:
+spacing.fixed.rem: 4
+margin.rem: 2
+padding.rem: 2
+
+-- back-button:
+
+-- ftd.row:
+wrap: true
+spacing.fixed.rem: 4
+border-radius.rem: 2
+
+-- ftd.image:
+src: $country-details.country.flags.svg
+width.fixed.calc: calc(50% - 4rem)
+
+-- ftd.column:
+width.fixed.percent: 50
+spacing.fixed.rem: 1
+
+-- ftd.text: $country-details.country.name.official
+style: bold
+role: $inherited.types.heading-small
+
+;; ----------
+
+-- ftd.row:
+width: fill-container
+wrap: true
+spacing: space-between
+
+-- ftd.column:
+spacing.fixed.rem: 0.5
+
+-- country-detail: Population:
+value: $utility.int-to-str(a = $country-details.country.population)
+
+-- country-detail: Native Name:
+value: $country-details.country.name.nativeName.eng.common
+if: { !ftd.is_empty(country-details.country.name.nativeName) && !ftd.is_empty(country-details.country.name.nativeName.eng.common) }
+
+-- country-detail: Region:
+value: $country-details.country.region
+
+-- country-detail: Sub-region:
+value: $country-details.country.subregion
+
+-- country-detail: Capital:
+value: $capital
+for: $capital in $country-details.country.capital
+
+-- end: ftd.column
+
+;; -------------
+
+-- ftd.column:
+spacing.fixed.rem: 0.5
+
+
+-- country-detail: Top Level Domain:
+value: $tld
+for: $tld in $country-details.country.tld
+
+-- end: ftd.column
+
+-- end: ftd.row
+
+;; --------------
+
+-- ftd.column:
+margin-top.rem: 4
+spacing.fixed.rem: 1
+
+-- ftd.text: Border countries:
+style: semi-bold
+role: $inherited.types.label-large
+
+-- ftd.row:
+wrap: true
+spacing.fixed.rem: 1
+
+-- border-country: $country
+for: $country in $country-details.country.borders
+
+-- end: ftd.row
+
+-- end: ftd.column
+
+-- end: ftd.column
+
+-- end: ftd.row
+
+-- end: ftd.column
+
+-- end: country-details

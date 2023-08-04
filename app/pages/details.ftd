@@ -1,0 +1,43 @@
+-- import: fastn/processors as pr
+-- import: country-details-http/models/country as country-models
+-- import: country-details-http/utils as utility
+-- import: country-details-ui/app/components/country-details as cd
+-- import: country-details-ui/app/components/layout
+
+;; ---- retrieve the cca2 param from the path
+;; eg. https://localhost.com/country/IN <- here "IN" is the value of "cca2"
+
+-- string cca2:
+$processor$: pr.request-data
+
+;; ---- Join the cca2 param value with the endpoint of the api
+
+-- string url: $utility.join(a = https://restcountries.com/v3.1/alpha/, b = $cca2)
+
+;; ---- Finally make a GET request to fetch the data from the API and map it to a list "country" model
+
+-- country-models.country list countries:
+$processor$: pr.http
+url: $url
+
+;; ---- Get the first country from the list
+
+-- country-models.country country: $utility.get-country-at-index(countries = $countries, index = 0)
+
+;; ---- Replace the title of the page/document with the name of the country 
+
+-- ftd.document: $country.name.official
+
+;; ---- Layout for the page
+
+-- layout.main:
+
+-- layout.header:
+
+;; ---- This component will display the details of the requested country
+
+-- cd.country-details: $country
+
+-- end: layout.main
+
+-- end: ftd.document

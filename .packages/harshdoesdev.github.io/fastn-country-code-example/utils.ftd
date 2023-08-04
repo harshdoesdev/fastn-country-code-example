@@ -1,0 +1,38 @@
+-- import: harshdoesdev.github.io/fastn-country-code-example/models/country as country-models
+
+;; ---- Joins two strings
+
+-- string join(a,b):
+string a:
+string b:
+
+a + b
+
+;; ---- Hack to convert an integer into string
+;; ---- TODO: Replace it with an internal function
+
+-- string int-to-str(a):
+integer a:
+
+"" + a
+
+;; ---- Opens the details page when we click on a card or tag
+
+-- void open-country-page(country):
+string country:
+
+ftd.http("/country/" + country, "get")
+
+;; ---- To Navigate back in browser history
+
+-- void go-back():
+
+window.history.go(-1)
+
+;; ---- get details of a country at a specific index
+
+-- country-models.country get-country-at-index(countries,index):
+country-models.country list countries:
+integer index:
+
+ftd.get(countries, index)

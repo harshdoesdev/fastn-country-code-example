@@ -1,0 +1,73 @@
+-- import: country-details-http/models/country as country-models
+-- import: country-details-ui/app/styles/shadow as shadow
+-- import: country-details-http/utils as utility
+
+-- component country-card:
+caption country-models.country country:
+
+-- ftd.column:
+width.fixed.px: 260
+height.fixed.px: 320
+shadow: $shadow.card-shadow
+overflow: auto
+border-radius.rem: 0.5
+margin.rem: 2
+cursor: pointer
+$on-click$: $utility.open-country-page(country = $country-card.country.cca2)
+
+-- ftd.image:
+src: $country-card.country.flags.svg
+width: fill-container
+height.fixed.percent: 50
+
+-- ftd.column:
+padding.rem: 1
+spacing.fixed.rem: 0.5
+
+-- ftd.text: $country-card.country.name.common
+style: bold
+role: $inherited.types.copy-regular
+
+-- ftd.row:
+spacing.fixed.rem: 1
+
+-- ftd.column:
+spacing.fixed.rem: 0.5
+
+-- ftd.text: Population:
+role: $inherited.types.label-large
+style: semi-bold
+
+-- ftd.text: Region:
+role: $inherited.types.label-large
+style: semi-bold
+
+-- ftd.text: Capital:
+style: semi-bold
+role: $inherited.types.label-large
+
+-- end: ftd.column
+
+-- ftd.column:
+spacing.fixed.rem: 0.5
+
+-- ftd.integer: $country-card.country.population
+role: $inherited.types.label-large
+
+-- ftd.text: $country-card.country.region
+role: $inherited.types.label-large
+
+-- ftd.text: $capital-name
+style: bold
+role: $inherited.types.label-large
+for: $capital-name, $index in $country-card.country.capital
+
+-- end: ftd.column
+
+-- end: ftd.row
+
+-- end: ftd.column
+
+-- end: ftd.column
+
+-- end: country-card

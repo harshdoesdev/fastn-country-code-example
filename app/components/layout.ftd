@@ -1,0 +1,34 @@
+-- import: country-details-ui/app/styles/shadow
+
+-- component main:
+children sections:
+
+-- ftd.column:
+children: $main.sections
+background.solid: #fefefe
+width: fill-container
+height: fill-container
+
+-- end: ftd.column
+
+-- end: main
+
+-- component header:
+
+-- ftd.column:
+background.solid: #fff
+width: fill-container
+padding-vertical.rem: 1
+padding-horizontal.rem: 2
+shadow: $shadow.card-shadow
+sticky: true
+top.px: 0
+left.px: 0
+
+-- ftd.text: Where in the world?
+style: bold
+role: $inherited.types.heading-small
+
+-- end: ftd.column
+
+-- end: header

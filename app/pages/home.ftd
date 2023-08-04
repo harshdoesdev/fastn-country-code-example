@@ -1,0 +1,44 @@
+-- import: country-details-http/models/country as country-models
+-- import: country-details-ui/app/components/card
+-- import: fastn/processors as pr
+-- import: country-details-ui/app/components/layout
+
+;; ---- make a GET request to retrieve a list of countries from the API and map the data of each country
+;; on the "country" model
+
+-- country-models.country list countries:
+$processor$: pr.http
+url: https://restcountries.com/v3.1/all
+
+;; ---- Home page component
+
+-- component page:
+
+;; ---- The "layout.main" component wraps all of the layout components
+
+-- layout.main:
+
+-- layout.header: ;; ---- Header component
+
+-- ftd.column:
+width: fill-container
+height: fill-container
+align-content: center
+overflow-y: auto
+
+-- ftd.row:
+wrap: true
+spacing: space-around
+padding.rem: 2
+border-radius.rem: 1
+
+-- card.country-card: $country
+for: $country in $countries ;; ---- loop/repeat this component to display a card for each country
+
+-- end: ftd.row
+
+-- end: ftd.column
+
+-- end: layout.main
+
+-- end: page

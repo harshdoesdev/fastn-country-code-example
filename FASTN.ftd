@@ -1,0 +1,13 @@
+-- import: fastn
+
+-- fastn.package: country-details-ui
+
+-- fastn.dependency: harshdoesdev.github.io/fastn-country-code-example as country-details-http
+
+;; ---- Dynamic url for the country details page
+
+-- fastn.dynamic-urls:
+
+# Country Details Page
+  url: /country/<string:cca2>/
+  document: app/pages/details.ftd
