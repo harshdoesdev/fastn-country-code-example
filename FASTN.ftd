@@ -1,0 +1,9 @@
+-- import: fastn
+
+-- fastn.package: fastn-community.github.io/country-details-http
+
+-- fastn.sitemap:
+
+# Home: index.html
+
+- Site Doc: index.html
